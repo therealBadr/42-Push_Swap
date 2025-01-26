@@ -1,7 +1,18 @@
-/*
- *
- *
- * t_list	*lst_map(t_list *lst)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   indexing.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bel-abde <bel-abde@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/26 22:54:10 by bel-abde          #+#    #+#             */
+/*   Updated: 2025/01/26 23:34:13 by bel-abde         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../push_swap.h"
+
+t_list	*lst_clone(t_list *lst)
 {
 	t_list	*new;
 
@@ -16,66 +27,65 @@
 
 void	del_max(t_list **clone, t_list *max)
 {
-	t_list	*i;
+	t_list	*current;
 
-	i = *clone;
-	if (i->data == max->data)
-		*clone = i->next;
-	while (i->next)
+	current = *clone;
+	if (current->data == max->data)
+		*clone = clone->next;
+	else
 	{
-		if (i->next->data == max->data)
+		while (current->next)
 		{
-			i->next = i->next->next;
-			break ;
+			if (current->next->data == max->data)
+			{
+				current->next = current->next->next;
+				break;
+			}
+			current = current->next;
 		}
-		i = i->next;
 	}
 	max->next = NULL;
 	free(max);
 }
 
-void	find_max(t_list **lst, t_list **clone, int *x)
+void	find_max(t_list **original, t_list **clone, int *index)
 {
-	t_list	*i;
-	t_list	*j;
+	t_list	*current_clone;
+	t_list	*current_original;
 	t_list	*max;
 
-	i = *clone;
-	j = *lst;
-	max = i;
-	while (i)
+	current_clone = *clone;
+	current_original = *original;
+	max = current_clone;
+	while (current_clone)
 	{
-		if (max->data < i->data)
-			max = i;
-		i = i->next;
+		if (max->data < current_clone->data)
+			max = current_clone;
+		current_clone = current_clone->next;
 	}
-	while (j)
+	while (current_original)
 	{
-		if (max->data == j->data)
+		if (max->data == current_original->data)
 		{
-			j->i = (*x)--;
-			break ;
+			current_clone->i = (*index);
+			(*index)--;
 		}
-		j = j->next;
 	}
 	del_max(clone, max);
 }
 
-void	part_index(t_list **lst)
+void	assign_index(t_list **lst)
 {
-	int		x;
 	t_list	*clone;
-	t_list	*i;
+	t_list	*ptr;
+	int		n;
 
-	x = size_lst(*lst) - 1;
-	clone = lst_map(*lst);
-	i = *lst;
-	while (i)
+	n = size_lst(*lst) - 1;
+	clone = lst_clone(*lst);
+	ptr = *lst;
+	while (ptr)
 	{
-		find_max(lst, &clone, &x);
-		i = i->next;
+		find_max(lst, &clone, &n);
+		ptr = ptr->next;
 	}
 }
-
-
-*/

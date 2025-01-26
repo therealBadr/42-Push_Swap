@@ -6,7 +6,7 @@
 /*   By: bel-abde <bel-abde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 13:57:29 by bel-abde          #+#    #+#             */
-/*   Updated: 2025/01/26 19:52:55 by bel-abde         ###   ########.fr       */
+/*   Updated: 2025/01/26 23:56:19 by bel-abde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,19 @@ void	clear_result(char **result);
 int		is_sorted(t_list *stack_a);
 char	**ft_split(char const *s, char c);
 int		ft_atoi(char *str, t_list **stack_a, char **result);
+
+// Sorting
+int	get_my_range(int size);
+int	get_max_index(t_list *stack);
+void	push_to_b(t_list **stack_a, t_list **stack_b, int min, int max);
+void	push_to_a(t_list **stack_a, t_list **stack_b);
+void	main_algo(t_list **stack_a, t_list stack_a);
+
+// Indexing
+t_list	*lst_clone(t_list *lst);
+void	del_max(t_list **clone, t_list *max);
+void	find_max(t_list **original, t_list **clone, int *index);
+void	assign_index(t_list **lst);
+
 
 #endif
