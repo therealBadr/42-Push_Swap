@@ -1,33 +1,29 @@
-SRC =
+SRC = mandatory/ft_atoi.c \
+      mandatory/ft_split.c \
+      mandatory/lst_utils.c \
+      mandatory/parsing.c \
+      mandatory/push_swap.c
 
-SRC_BONUS =
-
-OBJ = ${SRC:.c=.o}
-
-OBJ_BONUS = ${SRC_BONUS:.c=.o}
-
-EXE_BONUS = checker
+OBJ = $(SRC:.c=.o)
 
 NAME = push_swap
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -fsanitize=address
 
-all: ${NAME}
+all: $(NAME)
 
-${NAME} : ${OBJ}
-	cc ${FLAGS} ${OBJ} -o ${NAME}
+$(NAME): $(OBJ)
+	cc $(FLAGS) $(OBJ) -o $(NAME)
 
-${EXE_BONUS} : ${OBJ_BONUS}
-	cc ${FLAGS} ${OBJ_BONUS} -o ${EXE_BONUS}
+%.o: %.c push_swap.h
+	cc $(FLAGS) -c $< -o $@
 
-%.o : %.c push_swap.h
-	cc ${FLAGS} -c $< -o $@
+clean:
+	rm -f $(OBJ)
 
-clean :
-	rm -f ${OBJ} ${OBJ_BONUS}
+fclean: clean
+	rm -f $(NAME)
 
-fclean : clean
-	rm -f ${NAME} ${EXE_BONUS}
+re: fclean all
 
-re : fclean all
-
+.PHONY: all clean fclean re

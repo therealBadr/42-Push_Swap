@@ -6,7 +6,7 @@
 /*   By: bel-abde <bel-abde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 17:56:15 by bel-abde          #+#    #+#             */
-/*   Updated: 2025/01/26 17:56:23 by bel-abde         ###   ########.fr       */
+/*   Updated: 2025/01/26 19:50:19 by bel-abde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	size_lst(t_list *lst)
 	return (count);
 }
 
-void	clr_all(t_list **lst)
+void	clear_all(t_list **lst)
 {
 	t_list	*i;
 	t_list	*swap;

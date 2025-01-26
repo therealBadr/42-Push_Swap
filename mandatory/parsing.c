@@ -6,7 +6,7 @@
 /*   By: bel-abde <bel-abde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 21:29:42 by bel-abde          #+#    #+#             */
-/*   Updated: 2025/01/26 18:25:57 by bel-abde         ###   ########.fr       */
+/*   Updated: 2025/01/26 19:55:51 by bel-abde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,22 +73,22 @@ int	parsing(char *str, t_list **stack_a)
 {
 	int		i;
 	char	**result;
-	
+
 	i = 0;
 	result = ft_split(str, ' ');
 	if (!result)
 		return (0);
 	while (result[i])
 	{
-		if (check_num(result[i]) == 0) // Error here
-			return (clear_result(result), 0); // function that would clear result to avoid leaks
+		if (check_num(result[i]) == 0)
+			return (clear_result(result), 0);
 		if (result[i][0] == '-' || result[i][0] == '+')
 		{
-			if (res[i][1] == '\0')
+			if (result[i][1] == '\0')
 				return (clear_result(result), 0);
 		}
 		add_back(stack_a, new_node(ft_atoi(result[i], stack_a, result)));
-		i++;	
+		i++;
 	}
 	clear_result(result);
 	return (1);
@@ -112,35 +112,6 @@ int	check_num(char *str)
 	}
 	return (1);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*
 int	if_sorted(t_list *head)
