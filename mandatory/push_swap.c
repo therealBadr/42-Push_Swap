@@ -6,11 +6,11 @@
 /*   By: bel-abde <bel-abde@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:12:44 by bel-abde          #+#    #+#             */
-/*   Updated: 2025/01/22 15:47:02 by bel-abde         ###   ########.fr       */
+/*   Updated: 2025/01/22 21:27:44 by bel-abde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	main(int argc, char **argv)
 {
