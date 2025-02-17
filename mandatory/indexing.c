@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   indexing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bel-abde <bel-abde@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bel-abde <bel-abde@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 22:54:10 by bel-abde          #+#    #+#             */
-/*   Updated: 2025/01/26 23:34:13 by bel-abde         ###   ########.fr       */
+/*   Updated: 2025/02/02 00:16:48 by bel-abde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,13 @@ void	del_max(t_list **clone, t_list *max)
 {
 	t_list	*current;
 
+	if (!clone || !*clone || !max)
+		return ;
 	current = *clone;
 	if (current->data == max->data)
-		*clone = clone->next;
+	{
+		*clone = current->next;
+	}
 	else
 	{
 		while (current->next)
@@ -39,7 +43,7 @@ void	del_max(t_list **clone, t_list *max)
 			if (current->next->data == max->data)
 			{
 				current->next = current->next->next;
-				break;
+				break ;
 			}
 			current = current->next;
 		}
@@ -67,9 +71,11 @@ void	find_max(t_list **original, t_list **clone, int *index)
 	{
 		if (max->data == current_original->data)
 		{
-			current_clone->i = (*index);
+			current_original->i = (*index);
 			(*index)--;
+			break ;
 		}
+		current_original = current_original->next;
 	}
 	del_max(clone, max);
 }

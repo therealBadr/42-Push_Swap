@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bel-abde <bel-abde@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bel-abde <bel-abde@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 17:57:11 by bel-abde          #+#    #+#             */
-/*   Updated: 2025/01/26 18:07:26 by bel-abde         ###   ########.fr       */
+/*   Updated: 2025/02/07 14:28:42 by bel-abde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	ft_atoi(char *str, t_list **stack_a, char **result)
+long	ft_atoi(char *str, t_list **stack_a, char **result)
 {
 	long	res;
 	int		sign;
@@ -37,5 +37,5 @@ int	ft_atoi(char *str, t_list **stack_a, char **result)
 		}
 		i++;
 	}
-	return ((int)res * sign);
+	return (res * sign);
 }

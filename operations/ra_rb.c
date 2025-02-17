@@ -6,7 +6,7 @@
 /*   By: bel-abde <bel-abde@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:55:53 by bel-abde          #+#    #+#             */
-/*   Updated: 2025/01/22 15:42:50 by bel-abde         ###   ########.fr       */
+/*   Updated: 2025/02/07 14:40:14 by bel-abde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	rb(t_list **stack_b, int flag)
 		write(1, "rb\n", 3);
 }
 
-void	rrr(t_list **s_a, t_list **s_b, int flag)
+void	rr(t_list **s_a, t_list **s_b, int flag)
 {
 	if (s_a && s_b)
 	{

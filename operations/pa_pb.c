@@ -6,7 +6,7 @@
 /*   By: bel-abde <bel-abde@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 15:09:03 by bel-abde          #+#    #+#             */
-/*   Updated: 2025/01/22 15:41:43 by bel-abde         ###   ########.fr       */
+/*   Updated: 2025/02/07 14:39:51 by bel-abde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,30 +20,30 @@ void	add_front(t_list **lst, t_list *new)
 	*lst = new;
 }
 
-void	pa(t_list **s_a, t_list **s_b, int flag)
+void	pa(t_list **stack_a, t_list **stack_b, int flag)
 {
 	t_list	*temp;
 
-	if (!s_a || !*s_a || !s_b || !*s_b)
+	if (!stack_b || !*stack_b)
 		return ;
-	temp = *s_b;
-	*s_b = (*s_b)->next;
-	temp->next = *s_a;
-	*s_a = temp;
+	temp = *stack_b;
+	*stack_b = (*stack_b)->next;
+	temp->next = *stack_a;
+	*stack_a = temp;
 	if (flag == 1)
 		write(1, "pa\n", 3);
 }
 
-void	pb(t_list **s_a, t_list **s_b, int flag)
+void	pb(t_list **stack_a, t_list **stack_b, int flag)
 {
 	t_list	*temp;
 
-	if (!s_a || !*s_a || !s_b || !*s_b)
+	if (!stack_a || !*stack_a)
 		return ;
-	temp = *s_a;
-	*s_a = (*s_a)->next;
-	temp->next = *s_b;
-	*s_b = temp;
+	temp = *stack_a;
+	*stack_a = (*stack_a)->next;
+	temp->next = *stack_b;
+	*stack_b = temp;
 	if (flag == 1)
 		write(1, "pb\n", 3);
 }

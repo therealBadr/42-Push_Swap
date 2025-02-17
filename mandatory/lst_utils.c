@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bel-abde <bel-abde@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bel-abde <bel-abde@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 17:56:15 by bel-abde          #+#    #+#             */
-/*   Updated: 2025/01/26 19:50:19 by bel-abde         ###   ########.fr       */
+/*   Updated: 2025/02/08 20:17:30 by bel-abde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,24 +83,3 @@ t_list	*last_lst(t_list *lst)
 		lst = lst->next;
 	return (lst);
 }
-
-// void print_ind(t_list *h)
-// {
-// 	while (h)
-// 	{
-// 		printf("x = %d	==>	data = %d\n", h->i, h->data);
-// 		h = h->next;
-// 	}
-// }
-
-// void print_lst(t_list *lst)
-// {
-// 	t_list *i;
-
-// 	i = lst;
-// 	while (i)
-// 	{
-// 		printf("%d\n", i->data);
-// 		i = i->next;
-// 	}
-// }
