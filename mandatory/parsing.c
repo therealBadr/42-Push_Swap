@@ -6,7 +6,7 @@
 /*   By: bel-abde <bel-abde@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 21:29:42 by bel-abde          #+#    #+#             */
-/*   Updated: 2025/02/07 14:37:31 by bel-abde         ###   ########.fr       */
+/*   Updated: 2025/03/08 22:33:15 by bel-abde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	parsing(char *str, t_list **stack_a)
 		if (result[i][0] == '-' || result[i][0] == '+')
 		{
 			if (result[i][1] == '\0')
-				return (clear_result(result), clear_all(stack_a), 0);
+				return (clear_result(result), 0);
 		}
 		add_back(stack_a, new_node(ft_atoi(result[i], stack_a, result)));
 		i++;
