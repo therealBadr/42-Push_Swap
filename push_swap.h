@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bel-abde <bel-abde@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: bel-abde <bel-abde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 13:57:29 by bel-abde          #+#    #+#             */
-/*   Updated: 2025/02/17 14:08:03 by bel-abde         ###   ########.fr       */
+/*   Updated: 2025/03/11 16:55:57 by bel-abde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,14 @@ void	ft_checker(t_list **stack_a, t_list **stack_b);
 void	make_moves(t_list **stack_a, t_list **stack_b, char *operation);
 int		ft_strcmp(char *s1, char *s2);
 char	*get_next_line(int fd);
-size_t	ft_strlen(const char *s);
-char	*ft_strdup(const char *s1);
-char	*ft_strjoin(char *s1, char *s2);
-char	*ft_strchr(const char *s, int c);
+void	free_all(char *stash, char *buffer);
+char	*read_line(int fd, char *stash, int bytes_read);
+char	*get_my_line(char *stash, int i);
+char	*modify_stash(char *stash, int i);
+int		ft_strlen(char *str);
+char	*ft_strjoin(char *stash, char *buffer);
+char	*ft_strchr(char *str, int c);
+void	*ft_calloc(size_t count, size_t size);
+char	*ft_strdup(char *s1);
 
 #endif

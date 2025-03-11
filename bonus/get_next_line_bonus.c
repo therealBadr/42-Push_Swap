@@ -1,90 +1,133 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bel-abde <bel-abde@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/22 22:10:04 by bel-abde          #+#    #+#             */
+/*   Updated: 2025/03/11 16:54:52 by bel-abde         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
-char	*get_new_remainder(char *str)
+void	free_all(char *stash, char *buffer)
 {
-	char	*remainder;
-	int		i;
-
-	i = 0;
-	if (!str)
-		return (NULL);
-	while (str[i] && str[i] != '\n')
-		i++;
-	if (str[i] == '\0')
-		return (free(str), str = NULL, NULL);
-	remainder = ft_strdup(str + i + 1);
-	if (!remainder)
-		return (free(str), str = NULL, NULL);
-	free(str);
-	str = NULL;
-	return (remainder);
+	free(stash);
+	free(buffer);
 }
 
-char	*get_until_newline(char *remainder)
+char	*read_line(int fd, char *stash, int bytes_read)
 {
-	char	*str;
-	int		i;
+	char	*buffer;
+	char	*old_stash;
 
-	i = 0;
-	if (!remainder)
-		return (NULL);
-	while (remainder[i] && remainder[i] != '\n')
-		i++;
-	str = (char *)malloc(sizeof(char) * (i + 2));
-	if (!str)
-		return (NULL);
-	i = 0;
-	while (remainder[i] && remainder[i] != '\n')
+	buffer = malloc(BUFFER_SIZE + 1);
+	if (!buffer)
 	{
-		str[i] = remainder[i];
-		i++;
+		free(stash);
+		return (NULL);
 	}
-	if (remainder[i] == '\n')
+	while ((bytes_read != 0) && (!ft_strchr(stash, '\n')))
 	{
-		str[i] = remainder[i];
-		i++;
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		if (bytes_read == -1)
+		{
+			free_all(stash, buffer);
+			return (NULL);
+		}
+		buffer[bytes_read] = '\0';
+		old_stash = stash;
+		stash = ft_strjoin(stash, buffer);
+		free(old_stash);
 	}
-	str[i] = '\0';
-	return (str);
+	free(buffer);
+	return (stash);
 }
 
-int	read_into_remainder(int fd, char **remainder, char **tmp, int *read_bytes)
+char	*get_my_line(char *stash, int i)
 {
-	while (!ft_strchr(*remainder, '\n') && *read_bytes > 0)
+	char	*line;
+	int		length;
+
+	length = 0;
+	if (!stash[0])
+		return (NULL);
+	while (stash[i] && stash[i] != '\n')
 	{
-		*read_bytes = read(fd, *tmp, BUFFER_SIZE);
-		if (*read_bytes == -1)
-			return (free(*tmp), *tmp = NULL, 0);
-		(*tmp)[*read_bytes] = '\0';
-		*remainder = ft_strjoin(*remainder, *tmp);
+		i++;
+		length++;
 	}
-	return (1);
+	if (stash[i] == '\n')
+		length++;
+	line = ft_calloc((length + 1), sizeof(char));
+	if (!line)
+		return (NULL);
+	i = 0;
+	while (i < length)
+	{
+		line[i] = stash[i];
+		i++;
+	}
+	line[i] = '\0';
+	return (line);
+}
+
+char	*modify_stash(char *stash, int i)
+{
+	char	*new;
+	int		index;
+
+	index = 0;
+	if (!stash)
+		return (NULL);
+	while (stash[i] && stash[i] != '\n')
+		i++;
+	if (stash[i] == '\0')
+	{
+		free(stash);
+		return (NULL);
+	}
+	new = malloc((ft_strlen(stash) - i) + 1);
+	if (!new)
+	{
+		free(stash);
+		return (NULL);
+	}
+	i++;
+	while (stash[i])
+		new[index++] = stash[i++];
+	new[index] = '\0';
+	free(stash);
+	return (new);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*remainder;
-	char		*tmp;
+	static char	*stash;
 	char		*line;
-	int			read_bytes;
+	int			bytes_read;
+	int			i;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, NULL, 0) == -1)
-		return (free(remainder), remainder = NULL, NULL);
-	line = NULL;
-	tmp = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!tmp)
-		return (NULL);
-	read_bytes = 1;
-	if (!remainder)
-		remainder = ft_strdup("");
-	if (!read_into_remainder(fd, &remainder, &tmp, &read_bytes))
-		return (NULL);
-	if (read_bytes != 0 || ft_strlen(remainder) > 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 	{
-		line = get_until_newline(remainder);
-		remainder = get_new_remainder(remainder);
+		free(stash);
+		stash = NULL;
+		return (NULL);
 	}
-	else
-		return (free(remainder), remainder = NULL, free(tmp), tmp = NULL, NULL);
-	return (free(tmp), tmp = NULL, line);
+	bytes_read = 1;
+	i = 0;
+	stash = read_line(fd, stash, bytes_read);
+	if (!stash)
+		return (NULL);
+	line = get_my_line(stash, i);
+	if (!line)
+	{
+		free(stash);
+		stash = NULL;
+		return (NULL);
+	}
+	stash = modify_stash(stash, i);
+	return (line);
 }

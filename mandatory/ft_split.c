@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bel-abde <bel-abde@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: bel-abde <bel-abde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 21:33:34 by bel-abde          #+#    #+#             */
-/*   Updated: 2025/03/08 22:20:56 by bel-abde         ###   ########.fr       */
+/*   Updated: 2025/03/11 16:58:25 by bel-abde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static char	*get_my_word(char *s, char c)
 	return (res);
 }
 
-static void	free_all(char **res, int count)
+static void	free_everything(char **res, int count)
 {
 	int	i;
 
@@ -85,7 +85,7 @@ static char	**split_string(char const *s, char c, int word_count)
 		{
 			res[i] = get_my_word((char *)s, c);
 			if (!res[i])
-				return (free_all(res, i), NULL);
+				return (free_everything(res, i), NULL);
 			i++;
 		}
 		while (*s && *s != c)

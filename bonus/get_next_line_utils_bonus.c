@@ -1,25 +1,100 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bel-abde <bel-abde@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/22 22:23:16 by bel-abde          #+#    #+#             */
+/*   Updated: 2025/03/11 16:53:23 by bel-abde         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_strlen(char *str)
 {
-	size_t	i;
+	int	i;
 
-	if (!s)
+	if (!str)
 		return (0);
 	i = 0;
-	while (s[i])
+	while (str[i])
 		i++;
 	return (i);
 }
 
-char	*ft_strdup(const char *s1)
+char	*ft_strjoin(char *stash, char *buffer)
 {
 	int		i;
+	int		j;
 	char	*ptr;
 
-	if (!s1)
+	i = 0;
+	j = 0;
+	if (!stash)
+		return (ft_strdup(buffer));
+	ptr = malloc(ft_strlen(stash) + ft_strlen(buffer) + 1);
+	if (!ptr)
 		return (NULL);
-	ptr = (char *) malloc(ft_strlen(s1) + 1);
+	while (stash[i])
+	{
+		ptr[i] = stash[i];
+		i++;
+	}
+	while (buffer[j])
+	{
+		ptr[i] = buffer[j];
+		i++;
+		j++;
+	}
+	ptr[i] = '\0';
+	return (ptr);
+}
+
+char	*ft_strchr(char *str, int c)
+{
+	int	i;
+
+	i = 0;
+	if (!str)
+		return (NULL);
+	while (str[i] || (char)c == '\0')
+	{
+		if (str[i] == (char)c)
+			return ((char *)str + i);
+		i++;
+	}
+	return (NULL);
+}
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	unsigned char	*ptr;
+	size_t			i;
+	size_t			l;
+
+	i = 0;
+	l = count * size ;
+	if (size && count != (l / size))
+		return (NULL);
+	ptr = malloc(l);
+	if (!ptr)
+		return (NULL);
+	while (i < l)
+	{
+		ptr[i] = 0;
+		i++;
+	}
+	return ((void *)ptr);
+}
+
+char	*ft_strdup(char *s1)
+{
+	size_t	i;
+	char	*ptr;
+
+	ptr = (char *) malloc(sizeof(char) * (ft_strlen(s1) + 1));
 	if (!ptr)
 		return (NULL);
 	i = 0;
@@ -30,42 +105,4 @@ char	*ft_strdup(const char *s1)
 	}
 	ptr[i] = '\0';
 	return (ptr);
-}
-
-char	*ft_strjoin(char *s1, char *s2)
-{
-	size_t	i;
-	size_t	j;
-	char	*ptr;
-	size_t	len_s1;
-	size_t	len_s2;
-
-	if (!s1 || !s2)
-		return (NULL);
-	len_s1 = ft_strlen(s1);
-	len_s2 = ft_strlen(s2);
-	ptr = (char *) malloc(len_s1 + len_s2 + 1);
-	if (!ptr)
-		return (NULL);
-	i = 0;
-	j = 0;
-	while (s1 && i < len_s1)
-		ptr[i++] = s1[j++];
-	j = 0;
-	while (j < len_s2)
-		ptr[i++] = s2[j++];
-	ptr[i] = '\0';
-	free(s1);
-	return (ptr);
-}
-
-char	*ft_strchr(const char *s, int c)
-{
-	while (*s != (char)c)
-	{
-		if (!*s)
-			return (0);
-		s++;
-	}
-	return ((char *)s);
 }
