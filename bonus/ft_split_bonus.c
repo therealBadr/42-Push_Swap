@@ -6,11 +6,11 @@
 /*   By: bel-abde <bel-abde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 21:33:34 by bel-abde          #+#    #+#             */
-/*   Updated: 2025/03/12 19:52:49 by bel-abde         ###   ########.fr       */
+/*   Updated: 2025/03/12 21:59:16 by bel-abde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap_bonus.h"
 
 static int	count_my_word(char *str, char c)
 {

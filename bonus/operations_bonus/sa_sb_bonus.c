@@ -1,58 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rra_rrb.c                                          :+:      :+:    :+:   */
+/*   sa_sb_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-abde <bel-abde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 19:54:14 by bel-abde          #+#    #+#             */
-/*   Updated: 2025/03/12 19:54:17 by bel-abde         ###   ########.fr       */
+/*   Created: 2025/01/22 15:05:18 by bel-abde          #+#    #+#             */
+/*   Updated: 2025/03/12 22:10:07 by bel-abde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../push_swap_bonus.h"
 
-void	rra(t_list **stack_a, int flag)
+void	sa(t_list **stack_a, int flag)
 {
-	t_list	*i;
 	t_list	*temp;
 
 	if (!stack_a || !*stack_a || size_lst(*stack_a) < 2)
 		return ;
-	i = last_lst(*stack_a);
 	temp = *stack_a;
-	while (temp->next->next)
-		temp = temp->next;
-	temp->next = NULL;
-	i->next = *stack_a;
-	*stack_a = i;
+	*stack_a = (*stack_a)->next;
+	temp->next = (*stack_a)->next;
+	(*stack_a)->next = temp;
 	if (flag == 1)
-		write(1, "rra\n", 4);
+		write(1, "sa\n", 3);
 }
 
-void	rrb(t_list **stack_b, int flag)
+void	sb(t_list **stack_b, int flag)
 {
-	t_list	*i;
 	t_list	*temp;
 
 	if (!stack_b || !*stack_b || size_lst(*stack_b) < 2)
 		return ;
-	i = last_lst(*stack_b);
 	temp = *stack_b;
-	while (temp->next->next)
-		temp = temp->next;
-	temp->next = NULL;
-	i->next = *stack_b;
-	*stack_b = i;
+	*stack_b = (*stack_b)->next;
+	temp->next = (*stack_b)->next;
+	(*stack_b)->next = temp;
 	if (flag == 1)
-		write(1, "rrb\n", 4);
+		write(1, "sb\n", 3);
 }
 
-void	rrr(t_list **s_a, t_list **s_b, int flag)
+void	ss(t_list **s_a, t_list **s_b, int flag)
 {
 	if (s_a && s_b)
 	{
-		rra(s_a, flag);
-		rrb(s_b, flag);
+		sa(s_a, flag);
+		sb(s_b, flag);
 	}
 }

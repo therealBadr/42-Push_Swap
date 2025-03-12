@@ -6,11 +6,11 @@
 /*   By: bel-abde <bel-abde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 20:08:27 by bel-abde          #+#    #+#             */
-/*   Updated: 2025/03/11 17:08:46 by bel-abde         ###   ########.fr       */
+/*   Updated: 2025/03/12 21:59:04 by bel-abde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap_bonus.h"
 
 void	make_moves(t_list **stack_a, t_list **stack_b, char *operation)
 {
@@ -19,19 +19,19 @@ void	make_moves(t_list **stack_a, t_list **stack_b, char *operation)
 	else if (ft_strcmp(operation, "sb\n") == 0)
 		sb(stack_b, 0);
 	else if (ft_strcmp(operation, "ss\n") == 0)
-        	ss(stack_a, stack_b, 0);
+		ss(stack_a, stack_b, 0);
 	else if (ft_strcmp(operation, "pa\n") == 0)
-        	pa(stack_a, stack_b, 0);
+		pa(stack_a, stack_b, 0);
 	else if (ft_strcmp(operation, "pb\n") == 0)
-        	pb(stack_a, stack_b, 0);
+		pb(stack_a, stack_b, 0);
 	else if (ft_strcmp(operation, "ra\n") == 0)
-        	ra(stack_a, 0);
+		ra(stack_a, 0);
 	else if (ft_strcmp(operation, "rb\n") == 0)
-        	rb(stack_b, 0);
+		rb(stack_b, 0);
 	else if (ft_strcmp(operation, "rr\n") == 0)
-        	rr(stack_a, stack_b, 0);
+		rr(stack_a, stack_b, 0);
 	else if (ft_strcmp(operation, "rra\n") == 0)
-        	rra(stack_a, 0);
+		rra(stack_a, 0);
 	else if (ft_strcmp(operation, "rrb\n") == 0)
 		rrb(stack_b, 0);
 	else if (ft_strcmp(operation, "rrr\n") == 0)

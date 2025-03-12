@@ -6,7 +6,7 @@
 /*   By: bel-abde <bel-abde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 22:14:42 by bel-abde          #+#    #+#             */
-/*   Updated: 2025/03/12 00:12:26 by bel-abde         ###   ########.fr       */
+/*   Updated: 2025/03/12 20:24:14 by bel-abde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@ int	get_max_pos(t_list *stack)
 
 void	push_to_b(t_list **stack_a, t_list **stack_b, int min, int max)
 {
+	int	flag;
+
+	flag = edge_case(*stack_a, size_lst(*stack_a));
 	while (*stack_a)
 	{
 		if (((*stack_a)->i <= max) && ((*stack_a)->i >= min))
@@ -56,9 +59,7 @@ void	push_to_b(t_list **stack_a, t_list **stack_b, int min, int max)
 			max++;
 		}
 		else if (((*stack_a)->i) > max)
-		{
-			ra(stack_a, 1);
-		}
+			edge_condition(stack_a, flag);
 		else if (((*stack_a)->i) < min)
 		{
 			pb(stack_a, stack_b, 1);

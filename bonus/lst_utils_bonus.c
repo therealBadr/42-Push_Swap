@@ -6,11 +6,11 @@
 /*   By: bel-abde <bel-abde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 17:56:15 by bel-abde          #+#    #+#             */
-/*   Updated: 2025/03/12 19:52:40 by bel-abde         ###   ########.fr       */
+/*   Updated: 2025/03/12 21:59:27 by bel-abde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap_bonus.h"
 
 t_list	*new_node(int data)
 {

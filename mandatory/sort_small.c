@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_small.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bel-abde <bel-abde@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: bel-abde <bel-abde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/02 01:03:45 by bel-abde          #+#    #+#             */
-/*   Updated: 2025/02/16 19:58:26 by bel-abde         ###   ########.fr       */
+/*   Created: 2025/03/12 19:54:55 by bel-abde          #+#    #+#             */
+/*   Updated: 2025/03/12 21:33:15 by bel-abde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,17 @@ void	multi_move(t_list **stack, char *move, int nb)
 	int	i;
 
 	i = 0;
-	if (ft_strncmp(move, "ra", 2))
+	while (i < nb)
 	{
-		while (i < nb)
+		if (ft_strncmp(move, "ra", 2) == 0)
 		{
 			ra(stack, 1);
-			i++;
 		}
-	}
-	else
-	{
-		while (i < nb)
+		else
 		{
 			rra(stack, 1);
-			i++;
 		}
+		i++;
 	}
 }
 
@@ -59,25 +55,26 @@ int	get_min(t_list *stack)
 
 void	sort_three(t_list **stack)
 {
-	if ((*stack)->data < (*stack)->next->data && \
-		(*stack)->next->data > (*stack)->next->next->data && \
-		(*stack)->data < (*stack)->next->next->data)
+	int	top;
+	int	mid;
+	int	bot;
+
+	top = (*stack)->data;
+	mid = (*stack)->next->data;
+	bot = (*stack)->next->next->data;
+	if (top < mid && mid > bot && top < bot)
 	{
 		sa(stack, 1);
 		ra(stack, 1);
 	}
-	else if ((*stack)->data > (*stack)->next->data && \
-		(*stack)->next->data < (*stack)->next->next->data && \
-		(*stack)->data < (*stack)->next->next->data)
+	else if (top > mid && mid < bot && top < bot)
 		sa(stack, 1);
-	else if ((*stack)->data > (*stack)->next->data && \
-		(*stack)->next->data < (*stack)->next->next->data && \
-		(*stack)->data > (*stack)->next->next->data)
+	else if (top > mid && mid < bot && top > bot)
 		ra(stack, 1);
-	else if ((*stack)->data < (*stack)->next->data && \
-		(*stack)->next->data > (*stack)->next->next->data && \
-		(*stack)->data > (*stack)->next->next->data)
+	else if (top < mid && mid > bot && top > bot)
 		rra(stack, 1);
+	else if (top > mid && mid < bot && top > bot)
+		ra(stack, 1);
 	else
 	{
 		sa(stack, 1);
@@ -115,11 +112,11 @@ void	sort_five(t_list **stack_a, t_list **stack_b)
 	if (min_index == 1)
 		sa(stack_a, 1);
 	else if (min_index == 2)
-		multi_move(stack_a, "rra", 2);
-	else if (min_index == 3)
 		multi_move(stack_a, "ra", 2);
+	else if (min_index == 3)
+		multi_move(stack_a, "rra", 2);
 	else if (min_index == 4)
-		multi_move(stack_a, "ra", 1);
+		multi_move(stack_a, "rra", 1);
 	if (!is_sorted(*stack_a))
 	{
 		pb(stack_a, stack_b, 1);

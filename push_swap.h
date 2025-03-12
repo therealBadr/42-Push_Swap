@@ -6,16 +6,12 @@
 /*   By: bel-abde <bel-abde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 13:57:29 by bel-abde          #+#    #+#             */
-/*   Updated: 2025/03/12 00:13:04 by bel-abde         ###   ########.fr       */
+/*   Updated: 2025/03/12 21:57:11 by bel-abde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
-# endif
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -27,7 +23,6 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-// Operations
 void	ra(t_list **stack_a, int flag);
 void	rb(t_list **stack_b, int flag);
 void	rr(t_list **s_a, t_list **s_b, int flag);
@@ -64,22 +59,10 @@ t_list	*lst_clone(t_list *lst);
 void	del_max(t_list **clone, t_list *max);
 void	find_max(t_list **original, t_list **clone, int *index);
 void	assign_index(t_list **lst);
- int	ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	**ft_split(char const *s, char c);
 long	ft_atoi(char *str, t_list **stack_a, char **result);
-
-void	ft_checker(t_list **stack_a, t_list **stack_b);
-void	make_moves(t_list **stack_a, t_list **stack_b, char *operation);
-int		ft_strcmp(char *s1, char *s2);
-char	*get_next_line(int fd);
-void	free_all(char *stash, char *buffer);
-char	*read_line(int fd, char *stash, int bytes_read);
-char	*get_my_line(char *stash, int i);
-char	*modify_stash(char *stash, int i);
-int		ft_strlen(char *str);
-char	*ft_strjoin(char *stash, char *buffer);
-char	*ft_strchr(char *str, int c);
-void	*ft_calloc(size_t count, size_t size);
-char	*ft_strdup(char *s1);
+int		edge_case(t_list *stack, int size);
+void	edge_condition(t_list **stack_a, int flag);
 
 #endif

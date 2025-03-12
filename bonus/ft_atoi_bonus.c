@@ -6,11 +6,11 @@
 /*   By: bel-abde <bel-abde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 17:57:11 by bel-abde          #+#    #+#             */
-/*   Updated: 2025/03/12 19:52:51 by bel-abde         ###   ########.fr       */
+/*   Updated: 2025/03/12 21:59:12 by bel-abde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap_bonus.h"
 
 long	ft_atoi(char *str, t_list **stack_a, char **result)
 {

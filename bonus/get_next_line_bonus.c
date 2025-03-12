@@ -6,11 +6,11 @@
 /*   By: bel-abde <bel-abde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 22:10:04 by bel-abde          #+#    #+#             */
-/*   Updated: 2025/03/11 16:54:52 by bel-abde         ###   ########.fr       */
+/*   Updated: 2025/03/12 21:59:18 by bel-abde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap_bonus.h"
 
 void	free_all(char *stash, char *buffer)
 {
