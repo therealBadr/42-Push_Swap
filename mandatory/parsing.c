@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bel-abde <bel-abde@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: bel-abde <bel-abde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 21:29:42 by bel-abde          #+#    #+#             */
-/*   Updated: 2025/03/08 22:33:15 by bel-abde         ###   ########.fr       */
+/*   Updated: 2025/03/11 22:19:37 by bel-abde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,9 @@ int	parsing(char *str, t_list **stack_a)
 	result = ft_split(str, ' ');
 	if (!result)
 		return (0);
+	if (result[0] == NULL)
+		(write(2, "Error\n", 6), clear_result(result), \
+		clear_all(stack_a), exit(1));
 	while (result[i])
 	{
 		if (check_num(result[i]) == 0)
@@ -103,3 +106,9 @@ int	check_num(char *str)
 	}
 	return (1);
 }
+
+
+// int main(int argc, char *argv[])
+// {
+// 	printf("%d", parsing())
+// }

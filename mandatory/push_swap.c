@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bel-abde <bel-abde@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: bel-abde <bel-abde@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:12:44 by bel-abde          #+#    #+#             */
-/*   Updated: 2025/02/08 19:52:43 by bel-abde         ###   ########.fr       */
+/*   Updated: 2025/03/12 00:12:59 by bel-abde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ int	main(int argc, char **argv)
 	if (!stack_a || check_duplicate(stack_a) == 0)
 		(write(2, "Error\n", 6), clear_all(&stack_a), exit(1));
 	if (is_sorted(stack_a) == 1)
+	{
 		(clear_all(&stack_a), exit(1));
+	}
 	sorting_cases(&stack_a, &stack_b);
 	clear_all(&stack_a);
 	return (0);
